@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <p>Welcome, <?php echo htmlentities($_SESSION['username']); ?>!</p>
+    <p>Your unique feedback link: <a href="feedback.php?user=<?php echo htmlentities($shareableLink); ?>">Shareable Feedback Link</a></p>
+    <h2>Feedback Received</h2>
+    <ul>
+        <?php foreach ($feedback as $entry): ?>
+            <li><?php echo htmlentities($entry['message']); ?> - <?php echo htmlentities($entry['name']); ?></li>
+        <?php endforeach; ?>
+    </ul>
+    <a href="logout.php">Logout</a>
+</body>
+</html>
