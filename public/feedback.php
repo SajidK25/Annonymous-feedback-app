@@ -3,13 +3,12 @@ require_once '../classes/Feedback.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $userId = $_POST['user_id'];
-    $name = $_POST['name'];
     $message = $_POST['message'];
 
-    $feedback = new Feedback($userId, $name, $message);
+    $feedback = new Feedback($userId,$message);
     $feedback->save();
 
-    header('Location: feedback-success.html');
+    header('Location: feedback-success.php');
     exit();
 } else {
     include '../templates/feedback.html';

@@ -2,11 +2,11 @@
 session_start();
 
 class Auth {
-    public static function login($username, $password) {
-        if (User::verifyPassword($username, $password)) {
-            $user = User::find($username);
+    public static function login($email, $password) {
+        if (User::verifyPassword($email, $password)) {
+            $user = User::find($email);
             // print_r($user);
-            $_SESSION['username'] = $username;
+            $_SESSION['email'] = $email;
             $_SESSION['user_id'] = $user->getId();
             return true;
         }
@@ -18,11 +18,11 @@ class Auth {
     }
 
     public static function isLoggedIn() {
-        return isset($_SESSION['username']);
+        return isset($_SESSION['email']);
     }
 
-    public static function getUsername() {
-        return $_SESSION['username'];
+    public static function getEmail() {
+        return $_SESSION['email'];
     }
 
     public static function getUserId() {
